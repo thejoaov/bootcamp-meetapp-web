@@ -1,90 +1,50 @@
-import React, { useState, useMemo, useEffect } from 'react';
-import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
-import {
-  format,
-  subDays,
-  addDays,
-  setHours,
-  setMinutes,
-  setSeconds,
-  isBefore,
-  isEqual,
-  parseISO,
-} from 'date-fns';
-import { utcToZonedTime } from 'date-fns-tz';
+import React, { useState, useEffect } from 'react';
+import { format, parseISO } from 'date-fns';
 import pt from 'date-fns/locale/pt';
 
 import api from '~/services/api';
-import { Container, Time } from './styles';
-
-const range = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+import { Container, Meetup } from './styles';
+import history from '~/services/history';
 
 export default function Dashboard() {
-  const [date, setDate] = useState(new Date());
-  const [schedule, setSchedule] = useState([]);
-
-  const dateFormatted = useMemo(
-    () => format(date, "d 'de' MMMM", { locale: pt }, [date]),
-    [date]
-  );
+  const [meetup, setMeetup] = useState([]);
 
   useEffect(() => {
     async function loadSchedule() {
-      const response = await api.get('schedule', {
-        params: { date },
-      });
-
-      const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-
-      const data = range.map(hour => {
-        const checkDate = setSeconds(setMinutes(setHours(date, hour), 0), 0);
-        const compareDate = utcToZonedTime(checkDate, timezone);
-
-        return {
-          time: `${hour}:00h`,
-          past: isBefore(compareDate, new Date()),
-          appointment: response.data.find(a =>
-            isEqual(parseISO(a.date), compareDate)
-          ),
-        };
-      });
-
-      setSchedule(data);
+      const response = await api.get('meetups');
+      const data = response.data.map(m => ({
+        ...m,
+        formattedDate: format(parseISO(m.date), "d 'de' MMMM', às' h'h'", {
+          locale: pt,
+        }),
+      }));
+      setMeetup(data);
     }
     loadSchedule();
-  }, [date]);
+  }, []);
 
-  function handlePrevDay() {
-    setDate(subDays(date, 1));
-  }
-  function handleNextDay() {
-    setDate(addDays(date, 1));
+  function handleNewMeetup() {
+    console.tron.log('new meetup');
   }
 
   return (
     <Container>
       <header>
-        <button onClick={handlePrevDay} type="button">
-          <MdChevronLeft size={36} color="#FFF" />
-        </button>
-        <strong>{dateFormatted}</strong>
-        <button onClick={handleNextDay} type="button">
-          <MdChevronRight size={36} color="#FFF" />
+        <h1>Meus Meetups</h1>
+        <button type="button" onClick={handleNewMeetup}>
+          Novo Meetup
         </button>
       </header>
-
       <ul>
-        {schedule.map(time => (
-          <Time key={time.time} past={time.past} available={!time.appointment}>
-            <strong>{time.time}</strong>
-            <span>
-              {time.appointment
-                ? time.appointment.user.name
-                : time.past
-                ? 'Indisponível'
-                : 'Disponível'}
-            </span>
-          </Time>
+        {meetup.map(item => (
+          <Meetup
+            onClick={() => history.push(`/meetup/${item.id}`, item)}
+            key={item.title}
+            past={item.past}
+          >
+            <strong>{item.title}</strong>
+            <p>{item.formattedDate}</p>
+          </Meetup>
         ))}
       </ul>
     </Container>

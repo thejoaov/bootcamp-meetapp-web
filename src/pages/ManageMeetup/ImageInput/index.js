@@ -5,7 +5,7 @@ import { useField } from '@rocketseat/unform';
 import { Container } from './styles';
 import api from '~/services/api';
 
-export default function AvatarInput() {
+export default function ImageInput() {
   const { defaultValue, registerField } = useField('avatar');
 
   const [file, setFile] = useState(defaultValue && defaultValue.id);
@@ -38,17 +38,12 @@ export default function AvatarInput() {
 
   return (
     <Container>
-      <label htmlFor="avatar">
-        <img
-          src={
-            preview || 'https://api.adorable.io/avatars/40/abott@adorable.png'
-          }
-          alt=""
-        />
+      <label htmlFor="image">
+        <img src={preview} alt="" />
 
         <input
           type="file"
-          id="avatar"
+          id="image"
           accept="image/*"
           data-file={file}
           onChange={handleChange}

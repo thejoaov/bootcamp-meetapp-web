@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { lighten } from 'polished';
+import { darken } from 'polished';
 
 export const Container = styled.div`
-  max-width: 600px;
+  max-width: 940px;
   margin: 50px auto;
   form {
     display: flex;
@@ -37,26 +37,36 @@ export const Container = styled.div`
       margin: 10px 0 20px;
     }
 
-    aside {
-      width: 100%;
-      display: flex;
-      justify-content: flex-end;
+    button {
+      margin: 5px 0 0;
+      height: 44px;
+      background: #3b9eff;
+      font-weight: bold;
+      color: #fff;
+      border: 0;
+      border-radius: 4px;
+      font-size: 16px;
+      transition: background 0.2s;
 
-      button {
-        height: 44px;
-        width: 172px;
-        background: #f94d6a;
-        font-weight: bold;
-        color: #fff;
-        border: 0;
-        border-radius: 4px;
-        font-size: 16px;
-        transition: all 0.5s;
-
-        &:hover {
-          background: ${lighten(0.08, '#F94D6A')};
-        }
+      &:hover {
+        background: ${darken(0.03, '#3b9eff')};
       }
+    }
+  }
+  > button {
+    width: 100%;
+    margin: 5px 0 0;
+    height: 44px;
+    background: #f64c75;
+    font-weight: bold;
+    color: #fff;
+    border: 0;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: background 0.2s;
+
+    &:hover {
+      background: ${darken(0.08, '#F64C75')};
     }
   }
 `;

@@ -1,12 +1,13 @@
 import styled from 'styled-components';
+import { lighten } from 'polished';
 
 export const Container = styled.div`
-  background: #fff;
-  padding: 0 30px;
+  background: #000;
+  padding: 0 10px 0 20px;
 `;
 
 export const Content = styled.div`
-  height: 64px;
+  height: 92px;
   max-width: 900px;
   margin: 0 auto;
   display: flex;
@@ -18,36 +19,40 @@ export const Content = styled.div`
     align-items: center;
 
     img {
-      margin-right: 20px;
-      padding-right: 20px;
-      border-right: 1px solid #eee;
-    }
+      margin-left: 10px;
 
-    a {
-      font-weight: bold;
-      color: #7159c1;
+      &:hover {
+        fill: #fff;
+      }
     }
   }
 
   aside {
+    font-size: 14px;
     display: flex;
     align-items: center;
+
+    a {
+      transition: all 0.2s;
+
+      &:hover {
+        color: #fff;
+      }
+    }
   }
 `;
 
 export const Profile = styled.div`
   display: flex;
-  margin-left: 20px;
-  padding-left: 20px;
-  border-left: 1px solid #eee;
+  align-items: center;
+  padding: 0 20px;
 
   div {
     text-align: right;
-    margin-right: 10px;
 
     strong {
       display: block;
-      color: #333;
+      color: #fff;
     }
 
     a {
@@ -57,9 +62,27 @@ export const Profile = styled.div`
       color: #999;
     }
   }
+
   img {
     height: 32px;
     width: 32px;
     border-radius: 50%;
+  }
+
+  button {
+    margin-left: 30px;
+    height: 44px;
+    width: 71px;
+    background: #f94d6a;
+    font-weight: bold;
+    color: #fff;
+    border: 0;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: all 0.5s;
+
+    &:hover {
+      background: ${lighten(0.08, '#F94D6A')};
+    }
   }
 `;
