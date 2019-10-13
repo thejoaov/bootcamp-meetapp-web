@@ -28,7 +28,9 @@ export default function Meetup({ match }) {
         <h1>{meetup.title}</h1>
         <aside>
           <button
-            onClick={() => history.push(`/meetup/${meetup.id}/edit`)}
+            onClick={() =>
+              history.push(`/meetup/${meetup.id}/edit`, { meetup })
+            }
             className="edit"
             type="button"
           >

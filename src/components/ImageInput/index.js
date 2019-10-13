@@ -1,27 +1,28 @@
 import React, { useState, useRef, useEffect } from 'react';
-
 import { useField } from '@rocketseat/unform';
 
-import { Container } from './styles';
 import api from '~/services/api';
 
-export default function ImageInput() {
-  const { defaultValue, registerField } = useField('avatar');
+import { Container } from './styles';
 
-  const [file, setFile] = useState(defaultValue && defaultValue.id);
+export default function ImageInput() {
+  const { defaultValue, registerField } = useField('image');
+
   const [preview, setPreview] = useState(defaultValue && defaultValue.url);
+  const [file, setFile] = useState(defaultValue && defaultValue.id);
 
   const ref = useRef();
 
   useEffect(() => {
     if (ref.current) {
       registerField({
-        name: 'avatar_id',
+        name: 'imageId',
         ref: ref.current,
         path: 'dataset.file',
       });
     }
-  }, [ref, registerField]);
+    // eslint-disable-next-line
+  }, [ref.current]);
 
   async function handleChange(e) {
     const data = new FormData();
@@ -39,14 +40,18 @@ export default function ImageInput() {
   return (
     <Container>
       <label htmlFor="image">
-        <img src={preview} alt="" />
+        {preview ? (
+          <img src={preview} alt="" />
+        ) : (
+          <h2>Selecionar uma imagem</h2>
+        )}
 
         <input
           type="file"
           id="image"
           accept="image/*"
-          data-file={file}
           onChange={handleChange}
+          data-file={file}
           ref={ref}
         />
       </label>

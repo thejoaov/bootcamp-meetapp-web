@@ -38,7 +38,7 @@ export default function Dashboard() {
       <ul>
         {meetup.map(item => (
           <Meetup
-            onClick={() => history.push(`/meetup/${item.id}`, item)}
+            onClick={() => history.push(`/meetup/${item.id}`, { item })}
             key={item.title}
             past={item.past}
           >
