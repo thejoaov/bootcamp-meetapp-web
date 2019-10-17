@@ -23,15 +23,11 @@ export default function Dashboard() {
     loadSchedule();
   }, []);
 
-  function handleNewMeetup() {
-    console.tron.log('new meetup');
-  }
-
   return (
     <Container>
       <header>
         <h1>Meus Meetups</h1>
-        <button type="button" onClick={handleNewMeetup}>
+        <button type="button" onClick={() => history.push('/meetup/new')}>
           Novo Meetup
         </button>
       </header>

@@ -4,7 +4,7 @@ import { Container, Content, Footer } from './styles';
 import api from '~/services/api';
 import history from '~/services/history';
 
-export default function Meetup({ match }) {
+export default function DetailMeetup({ match }) {
   const [meetup, setMeetup] = useState({});
   useEffect(() => {
     const { id } = match.params;

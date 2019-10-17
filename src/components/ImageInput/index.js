@@ -16,7 +16,7 @@ export default function ImageInput() {
   useEffect(() => {
     if (ref.current) {
       registerField({
-        name: 'imageId',
+        name: 'image_id',
         ref: ref.current,
         path: 'dataset.file',
       });

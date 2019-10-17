@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  align-self: center;
   margin-bottom: 10px;
-
+  width: 100%;
+  align-self: center;
   label {
     cursor: pointer;
 
