@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { Container, Content, Profile } from './styles';
+import { Container, Content, Profile, LogoutButton } from './styles';
 import logo from '~/assets/logo.svg';
 import { signOut } from '~/store/modules/auth/actions';
 
@@ -30,10 +30,17 @@ export default function Header() {
               <strong>{profile.name}</strong>
               <Link to="/profile">Meu perfil</Link>
             </div>
-            <button onClick={handleLogout} type="button">
-              Sair
-            </button>
+            <img
+              src={
+                profile.avatar.url ||
+                'https://api.adorable.io/avatars/40/abott@adorable.png'
+              }
+              alt={profile.avatar.id}
+            />
           </Profile>
+          <LogoutButton onClick={handleLogout} type="button">
+            Sair
+          </LogoutButton>
         </aside>
       </Content>
     </Container>

@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { format, parseISO } from 'date-fns';
+import pt from 'date-fns/locale/pt-BR';
+import { MdLocationOn, MdEvent } from 'react-icons/md';
 
 import { Container, Content, Footer } from './styles';
 import api from '~/services/api';
@@ -12,7 +15,17 @@ export default function DetailMeetup({ match }) {
       try {
         const response = await api.get(`/meetups/${id}`);
 
-        const data = { ...response.data, imageUrl: response.data.image.url };
+        const data = {
+          ...response.data,
+          imageUrl: response.data.image.url,
+          formattedDate: format(
+            parseISO(response.data.date),
+            "dd ' de ' MMMM ' às' H BBBB",
+            {
+              locale: pt,
+            }
+          ),
+        };
 
         setMeetup(data);
       } catch (error) {
@@ -44,8 +57,12 @@ export default function DetailMeetup({ match }) {
         <p className="description">Descrição:</p>
         <p>{meetup.description}</p>
         <Footer>
-          <p>{meetup.date}</p>
-          <p>{meetup.location}</p>
+          <p>
+            <MdEvent /> {meetup.formattedDate}
+          </p>
+          <p>
+            <MdLocationOn /> {meetup.location}
+          </p>
         </Footer>
       </Content>
     </Container>

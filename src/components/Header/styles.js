@@ -46,6 +46,8 @@ export const Profile = styled.div`
   display: flex;
   align-items: center;
   padding: 0 20px;
+  border-right: 1px solid #eee;
+  transition: all 0.5s;
 
   div {
     text-align: right;
@@ -64,25 +66,27 @@ export const Profile = styled.div`
   }
 
   img {
-    height: 32px;
-    width: 32px;
+    height: 60px;
+    width: 60px;
     border-radius: 50%;
+    object-fit: cover;
+    margin-left: 15px;
   }
+`;
 
-  button {
-    margin-left: 30px;
-    height: 44px;
-    width: 71px;
-    background: #f94d6a;
-    font-weight: bold;
-    color: #fff;
-    border: 0;
-    border-radius: 4px;
-    font-size: 16px;
-    transition: all 0.5s;
+export const LogoutButton = styled.button`
+  margin-left: 30px;
+  height: 44px;
+  width: 71px;
+  background: #f94d6a;
+  font-weight: bold;
+  color: #fff;
+  border: 0;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: all 0.5s;
 
-    &:hover {
-      background: ${lighten(0.08, '#F94D6A')};
-    }
+  &:hover {
+    background: ${lighten(0.08, '#F94D6A')};
   }
 `;

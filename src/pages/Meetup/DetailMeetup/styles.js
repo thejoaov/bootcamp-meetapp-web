@@ -58,8 +58,18 @@ export const Content = styled.div`
 export const Footer = styled.div`
   font-size: 16px;
   width: 500px;
-  margin: 30px;
   display: flex;
+  margin: 30px;
   color: #999;
   justify-content: space-between;
+  flex-direction: row;
+
+  p {
+    display: flex;
+    align-items: center;
+
+    > :first-child {
+      margin-right: 5px;
+    }
+  }
 `;

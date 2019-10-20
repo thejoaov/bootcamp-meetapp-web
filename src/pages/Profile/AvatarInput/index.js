@@ -6,7 +6,7 @@ import { Container } from './styles';
 import api from '~/services/api';
 
 export default function AvatarInput() {
-  const { defaultValue, registerField } = useField('image');
+  const { defaultValue, registerField } = useField('avatar');
 
   const [file, setFile] = useState(defaultValue && defaultValue.id);
   const [preview, setPreview] = useState(defaultValue && defaultValue.url);
@@ -16,7 +16,7 @@ export default function AvatarInput() {
   useEffect(() => {
     if (ref.current) {
       registerField({
-        name: 'image_id',
+        name: 'avatar_id',
         ref: ref.current,
         path: 'dataset.file',
       });
@@ -38,12 +38,17 @@ export default function AvatarInput() {
 
   return (
     <Container>
-      <label htmlFor="image">
-        <img src={preview} alt="" />
+      <label htmlFor="avatar">
+        <img
+          src={
+            preview || 'https://api.adorable.io/avatars/285/abott@adorable.png'
+          }
+          alt=""
+        />
 
         <input
           type="file"
-          id="image"
+          id="avatar"
           accept="image/*"
           data-file={file}
           onChange={handleChange}
