@@ -39,6 +39,7 @@ export default function Dashboard() {
             past={item.past}
           >
             <strong>{item.title}</strong>
+            <p>{item.creator.name}</p>
             <p>{item.formattedDate}</p>
           </Meetup>
         ))}

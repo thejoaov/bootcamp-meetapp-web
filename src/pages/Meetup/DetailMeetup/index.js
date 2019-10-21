@@ -9,12 +9,13 @@ import history from '~/services/history';
 
 export default function DetailMeetup({ match }) {
   const [meetup, setMeetup] = useState({});
+  const [creator, setCreator] = useState({});
   useEffect(() => {
     const { id } = match.params;
     async function loadMeetup() {
       try {
         const response = await api.get(`/meetups/${id}`);
-
+        setCreator(response.data.creator);
         const data = {
           ...response.data,
           imageUrl: response.data.image.url,
@@ -35,10 +36,17 @@ export default function DetailMeetup({ match }) {
     loadMeetup();
   }, [match.params]);
 
+  async function handleCancel(id) {
+    await api.delete(`/meetups/${id}`).then(history.push('/dashboard'));
+  }
+
   return (
     <Container>
       <header>
-        <h1>{meetup.title}</h1>
+        <div>
+          <h1>{meetup.title}</h1>
+          <h3>{creator.name}</h3>
+        </div>
         <aside>
           <button
             onClick={() =>
@@ -49,7 +57,9 @@ export default function DetailMeetup({ match }) {
           >
             Editar
           </button>
-          <button type="button">Cancelar</button>
+          <button onClick={() => handleCancel(meetup.id)} type="button">
+            Cancelar
+          </button>
         </aside>
       </header>
       <Content>

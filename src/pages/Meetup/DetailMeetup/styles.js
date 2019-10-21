@@ -12,6 +12,13 @@ export const Container = styled.div`
     display: flex;
     justify-content: space-between;
     margin-bottom: 50px;
+    div {
+      display: block;
+
+      h3 {
+        color: #999;
+      }
+    }
     h1 {
       color: #fff;
       font-size: 32px;

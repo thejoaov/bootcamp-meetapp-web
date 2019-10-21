@@ -35,7 +35,7 @@ export default function Header() {
                 profile.avatar.url ||
                 'https://api.adorable.io/avatars/40/abott@adorable.png'
               }
-              alt={profile.avatar.id}
+              alt={profile.name}
             />
           </Profile>
           <LogoutButton onClick={handleLogout} type="button">

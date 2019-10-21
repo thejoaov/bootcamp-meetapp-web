@@ -3,6 +3,7 @@ import { Form, Input } from '@rocketseat/unform';
 import { Container } from './styles';
 import ImageInput from '~/components/ImageInput';
 import NotFound404 from '~/pages/NotFound404';
+import DatePicker from '~/components/DatePicker';
 
 export default function EditMeetup({ location }) {
   if (!location.state) return <NotFound404 />;
@@ -19,7 +20,7 @@ export default function EditMeetup({ location }) {
 
         <Input name="title" placeholder="Título" />
         <Input name="description" multiline placeholder="Descrição" />
-        <Input name="date" placeholder="Data" />
+        <DatePicker name="date" placeholder="Data" />
         <Input name="location" placeholder="Localização" />
         <aside>
           <button type="submit">Salvar perfil</button>
