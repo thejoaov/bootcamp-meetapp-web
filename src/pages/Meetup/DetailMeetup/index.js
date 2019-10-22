@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { format, parseISO } from 'date-fns';
 import pt from 'date-fns/locale/pt-BR';
 import { MdLocationOn, MdEvent } from 'react-icons/md';
+import { toast } from 'react-toastify';
 
 import { Container, Content, Footer } from './styles';
+
 import api from '~/services/api';
 import history from '~/services/history';
 
@@ -37,7 +39,9 @@ export default function DetailMeetup({ match }) {
   }, [match.params]);
 
   async function handleCancel(id) {
-    await api.delete(`/meetups/${id}`).then(history.push('/dashboard'));
+    await api.delete(`/meetups/${id}`);
+    toast.info('Meetup cancelado.');
+    history.push('/dashboard');
   }
 
   return (

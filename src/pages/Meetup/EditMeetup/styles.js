@@ -2,8 +2,9 @@ import styled from 'styled-components';
 import { lighten } from 'polished';
 
 export const Container = styled.div`
-  max-width: 940px;
+  max-width: 700px;
   margin: 50px auto;
+
   form {
     display: flex;
     flex-direction: column;
@@ -11,9 +12,10 @@ export const Container = styled.div`
 
     input {
       background: rgba(0, 0, 0, 0.1);
-      font-size: 18px;
+      font-size: 14px;
       border: 0;
       border-radius: 4px;
+      width: 100%;
       height: 44px;
       padding: 0 15px;
       color: #fff;
@@ -28,8 +30,8 @@ export const Container = styled.div`
       background: rgba(0, 0, 0, 0.1);
       border: 0;
       border-radius: 4px;
-      height: 200px;
-      min-height: 200px;
+      height: 150px;
+      min-height: 150px;
       width: 100%;
       min-width: 100%;
       max-width: 100%;
@@ -38,7 +40,7 @@ export const Container = styled.div`
       color: #fff;
       margin: 0 0 10px;
       align-self: center;
-      font-size: 18px;
+      font-size: 14px;
 
       &::placeholder {
         color: rgba(255, 255, 255, 0.7);
@@ -74,9 +76,17 @@ export const Container = styled.div`
         border-radius: 4px;
         font-size: 16px;
         transition: all 0.5s;
+        margin-left: 15px;
 
         &:hover {
-          background: ${lighten(0.08, '#F94D6A')};
+          background: ${lighten(0.1, '#F94D6A')};
+        }
+      }
+
+      .cancel {
+        background: #4dbaf9;
+        &:hover {
+          background: ${lighten(0.1, '#4dbaf9')};
         }
       }
     }

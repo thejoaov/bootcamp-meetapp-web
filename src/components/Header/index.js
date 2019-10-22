@@ -32,10 +32,11 @@ export default function Header() {
             </div>
             <img
               src={
-                profile.avatar.url ||
-                'https://api.adorable.io/avatars/40/abott@adorable.png'
+                profile.avatar === null
+                  ? 'https://api.adorable.io/avatars/40/abott@adorable.png'
+                  : profile.avatar.url
               }
-              alt={profile.name}
+              alt="Profile"
             />
           </Profile>
           <LogoutButton onClick={handleLogout} type="button">

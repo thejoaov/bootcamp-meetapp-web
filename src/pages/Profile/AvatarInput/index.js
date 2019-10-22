@@ -18,7 +18,7 @@ export default function AvatarInput() {
       registerField({
         name: 'avatar_id',
         ref: ref.current,
-        path: 'dataset.file',
+        path: 'dataset.path',
       });
     }
   }, [ref, registerField]);
@@ -43,12 +43,12 @@ export default function AvatarInput() {
           src={
             preview || 'https://api.adorable.io/avatars/285/abott@adorable.png'
           }
-          alt=""
+          alt="Profile"
         />
 
         <input
           type="file"
-          id="avatar"
+          id="avatar_id"
           accept="image/*"
           data-file={file}
           onChange={handleChange}

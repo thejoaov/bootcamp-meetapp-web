@@ -39,8 +39,13 @@ export default function AvatarInput() {
   return (
     <Container>
       <label htmlFor="image">
-        <img src={preview} alt="" />
+        {preview && <img src={preview} alt="banner_meetapp" />}
 
+        {!preview && (
+          <div className="icon-add">
+            <p>Selecione uma imagem</p>
+          </div>
+        )}
         <input
           type="file"
           id="image"

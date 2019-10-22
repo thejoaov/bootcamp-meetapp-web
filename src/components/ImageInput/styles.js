@@ -1,33 +1,37 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  margin-bottom: 10px;
-  width: 100%;
-  align-self: center;
+  margin-top: 50px;
+  align-self: stretch;
+  border-radius: 10px;
+
   label {
     cursor: pointer;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+
+    margin-bottom: 10px;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.1);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    p {
+      font-size: 18px;
+      color: #fff;
+    }
 
     &:hover {
       opacity: 0.7;
     }
 
     img {
-      height: 300px;
       width: 100%;
-      border-radius: 5px;
-      background: rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
       object-fit: cover;
-    }
-
-    h2 {
-      height: 300px;
-      width: 100%;
-      border-radius: 5px;
-      background: rgba(0, 0, 0, 0.2);
-      color: rgba(255, 255, 255, 0.5);
-      display: flex;
-      justify-content: center;
-      align-items: center;
     }
 
     input {
