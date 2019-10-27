@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { Container } from './styles';
 import { updateProfileRequest } from '~/store/modules/user/actions';
-import AvatarInput from './AvatarInput';
+import AvatarInput from '~/components/AvatarInput';
 
 export default function Profile() {
   const profile = useSelector(state => state.user.profile);

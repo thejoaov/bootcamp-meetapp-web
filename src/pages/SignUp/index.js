@@ -5,7 +5,7 @@ import { Form, Input } from '@rocketseat/unform';
 import * as Yup from 'yup';
 import logo from '~/assets/logo.svg';
 import { signUpRequest } from '~/store/modules/auth/actions';
-import AvatarInput from './AvatarInput';
+import AvatarInput from '~/components/AvatarInput';
 
 const schema = Yup.object().shape({
   name: Yup.string().required('O nome é obrigatório'),
