@@ -40,7 +40,7 @@ export default function DetailMeetup({ match }) {
       }
     }
     loadMeetup();
-  }, []);
+  }, [match.params]);
 
   async function handleCancel(id) {
     await api.delete(`/meetups/${id}`);
